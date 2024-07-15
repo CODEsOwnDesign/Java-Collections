@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Arrays"
+       title="Arrays"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
+
+	<chapter id="chapter_2_arrays" title="Chapter 2: Arrays">
+		<procedure id="overview" title="Overview">
+			<p>
+				<code>Arrays</code> are the only collection support defined within the Java programming language.
+			</p>
+			<p>
+				They are objects that store a set of elements in an order accessible by <code>index</code>, or position
+			</p>
+			<p>
+				They are subclass of <code>Object</code> and implement both <code>Serializable</code> and <code>Cloneable</code>
+				interfaces
+			</p>
+			<note>
+				Since <code>arrays</code> subclass <code>Object</code>, you can synchronize on an array variable and
+				call its
+				<code>wait()</code>
+				and
+				<code>notify()</code> methods.
+			</note>
+		</procedure>
+		<procedure id="cloneable" title="Cloneable">
+			<p>
+				When creating a Java application, the main() method has a single argument that is a String
+				array: <code>public static void main(String args[].</code>
+			</p>
+			<p>
+				The compiler doesn't care what argument name you use, only that it is an array of String objects
+			</p>
+			<code-block collapsed-title="Array.java" collapsible="true" lang="java" src="Arrays/SimpleArray.java"/>
+		</procedure>
+	</chapter>
+
+</topic>
