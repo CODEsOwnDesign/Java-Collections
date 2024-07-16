@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
-<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Multidimensional Arrays" id="Multidimensional-Arrays">
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Multidimensional-Arrays"
+       title="Multidimensional Arrays"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-    <p>Start typing here...</p>
+	<procedure id="multidimensional-arrays">
+		<p>
+			Because arrays are handled through references, there is nothing that stops you from having an array
+			element refer to another array. When one array refers to another, you get a
+			<format style="italic">multidimensional array.</format>
+			This requires an extra set of square brackets for each added dimension on the declaration line. For
+			instance, if you wish to define a rectangular, two-dimensional array, you might use the following line:
+		</p>
+		<code-block lang="java">
+			int[][] coordinates;
+		</code-block>
+		<p>
+			As with one-dimensional arrays, if an array is one of primitives, you can immediately store values in it
+			once you create the array. Just declaring it is not sufficient. For instance, the following two lines
+			will result in a <code>compilation-time error</code> because the array variable is never initialized:
+		</p>
+		<code-block lang="java">
+			class MultidimensionalArray_1 {
+				public static void main(String[] args) {
+					int[][] coordinates;
+					coordinates[0][0] = 2;
+				}
+			}
+		</code-block>
+		<p>
+			If, however, you created the array between these two source line ( with something like
+			<code>coordinates = new int[3][4]; )</code>, the last line would become valid.
+		</p>
+		<p>
+			In the case of an array of objects, creating the multidimensional array produces an array full of null
+			object references. You still need to create the objects to store in the arrays, too
+		</p>
+		<p>
+			Because each element in the outermost array of a multidimensional array is an object reference, there is
+			nothing that requires your arrays to be rectangular (or cubic for three−dimensional arrays). Each inner
+			array can have its own size. For instance, the following demonstrates how to create a two−dimensional array
+			of floats where the inner arrays are sized like a set of bowling pins—the first row has one element, the
+			second has two, the third has three, and the fourth has four:
+		</p>
+		<code-block lang="java" src="Java-Collections/Arrays/TwoDimensionalArray.java"/>
+		<p>
+			<format color="DarkCyan" style="italic">
+				To help visualize the final array: A triangular, bowling−pin−like array.
+			</format>
+		</p>
+		<img alt="image_2.png" border-effect="rounded" src="image_2.png"/>
+		<p>
+			When accessing an array with multiple dimensions, each dimension expression is fully evaluated before the
+			next dimension expression to the right is ever examined. This is important to know if an exception happens
+			during an array access.
+		</p>
+		<note>
+			While you can syntactically place square brackets before or after an array variable when it is for a single
+			dimension <code>([index]name or name[index])</code>, you must place the square brackets after the array
+			variable for multiple dimensions, as in <code>name[index1][index2]</code>. Syntactically,
+			<code>[index1][index2]name</code> and <code>[index1]name[index2]</code> are illegal and will result in a
+			<code>compile−time error</code> if found in your code. For declarations, it is perfectly legal to place the
+			brackets before <code>(type [][]name)</code>, after <code>(type name[][])</code>, or around
+			<code>(type []name[])</code> the variable name
+		</note>
+		<p>
+			Keep in mind that computer memory is linear—when you access a multidimensional array you are really
+			accessing a one−dimensional array in memory. If you can access the memory in the order it is stored, the
+			access will be most efficient. Normally, this wouldn't matter if everything fit in memory, as computer
+			memory is quick to hop around. However, when using large data structures, linear access performs best and
+			avoids unnecessary swapping. In addition, you can simulate multidimensional arrays by packing them into a
+			one−dimensional array. This is done frequently with images. The two manners of packing the
+			one−dimensional array are row−major order, where the array is filled one row at a time; and column−major
+			order, where columns are placed into the array
+		</p>
+		<img alt="image_3.png" border-effect="rounded" src="image_3.png"/>
+		<format color="DarkCyan" style="italic">Row−major versus column−major order.</format>
+		<note>
+			In many of the image processing routines, such as <code>setPixels()</code> of the <code>ImageFilter</code>
+			class, you'll find two−dimensional image arrays flattened into row−major order, where Pixel (m, n)
+			translates into a one−dimensional position, <code>n * scansize + m</code>. This reads top−down,
+			left−to−right through the image data
+		</note>
+	</procedure>
+
 </topic>

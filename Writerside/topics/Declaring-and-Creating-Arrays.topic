@@ -1,9 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
-<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Declaring and Creating Arrays" id="Declaring-and-Creating-Arrays">
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Declaring-and-Creating-Arrays"
+       title="Declaring and Creating Arrays"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-    <p>Start typing here...</p>
+	<procedure id="declaring-and-creating">
+		<p>
+			Remember that arrays are objects that store a set of elements in an index−accessible order. Those elements
+			can either be a primitive datatype, such as an int or float, or any type of Object. To declare an array of a
+			particular type, just add brackets ([ ]) to the declaration:
+		</p>
+		<code-block lang="java">int[] variable;</code-block>
+		<p>For array declaration, the brackets can be in one of three places:</p>
+		<code>int[] variable;</code>
+		<code>int[] variable;</code>
+		<code>int variable[];</code>
+		<p>
+			The first says that the variable is of type int[]. The latter two say that the variable is an array and
+			that the array is of type int
+		</p>
+		<note>
+			This might sound like we're arguing semantics. However, there is a difference when you declare
+			multiple variables depending upon which form you use. The form <code>int[] var1, var2;</code> will declare
+			two variables that are int arrays, whereas <code>int []var1, var2; or int var1[], var2;</code> will declare
+			one int array and another just of type int
+		</note>
+		<p>
+			Once you have declared the array, you cna create the array and save a reference to it. The new operator
+			is used to create arrays. When you create an array, you must specify it length. Once this length is set,
+			you cannot change it. As the following demonstrates, the length can be specified as either a constant or
+			an expression:
+		</p>
+		<code-block lang="java">
+			int[] variable = new int[10];
+		</code-block>
+		or
+		<code-block lang="java">
+			int[] createArray(int size) {
+				return (new int[size]);
+			}
+		</code-block>
+		<note>
+			If you try to create an array where the length is negative, the runtime
+			<code>NegativeArraySizeException</code> will be thrown. Zero-length arrays, however, are valid
+		</note>
+		<p>You can combine array declaration and creation into one step:</p>
+		<code-block lang="java">int[] variable = new int[10];</code-block>
+		<warning>
+			In the event that the creation of an array results in an <code>OutOfMemoryError</code> being thrown, all
+			dimension expressions will already have been evaluated. This is important if an assignment is
+			performed where the dimension is specified. For example, if the expression
+			<code-block lang="java">
+				int[] variable = new int[var1 = var2 * var2];
+			</code-block>
+			were to cause an <code>OutOfMemoryError</code> to be thrown, the variable var1 will be set prior to the
+			error being thrown
+		</warning>
+		<p>
+			Once the array has been created, you can fill it up. This normally done with a for-loop or with separate
+			assignment statements. For instance, the following will create and fill a three-element array of names:
+		</p>
+		<code-block lang="java">
+			public class StringArray {
+				public static void main(String[] args) {
+					String names = new String[3];
+					names[0] = "Leonardo";
+					names[1] = "da";
+					names[2] = "Vinci";
+				}
+			}
+		</code-block>
+	</procedure>
 </topic>

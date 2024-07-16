@@ -6,7 +6,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-	<chapter id="chapter_2_arrays" title="Chapter 2: Arrays">
+	<chapter id="chapter_2_arrays" title="">
 		<procedure id="overview" title="Overview">
 			<p>
 				<code>Arrays</code> are the only collection support defined within the Java programming language.
@@ -34,7 +34,78 @@
 			<p>
 				The compiler doesn't care what argument name you use, only that it is an array of String objects
 			</p>
-			<code-block collapsed-title="Array.java" collapsible="true" lang="java" src="Arrays/SimpleArray.java"/>
+			<code-block collapsed-title="SimpleArray.java" collapsible="true" lang="java"
+			            src="Java-Collections/Arrays/SimpleArray.java"/>
+			<note>
+				Array indices cannot be of type <code>long</code>. Because only non−negative integers can be used as
+				indices, this effectively limits the number of elements in an array to 2,147,483,648, or 231 , with a
+				range of indices from 0 to 231‘.
+			</note>
+			<step>
+				Because an array's size does not change as we walk through the loop, there is no need to look up the
+				length for each test case, as in
+				<code-block collapsible="true" lang="java">
+					public class Arrays {
+						public static void main(String[] args) {
+							for (int i = 0; i &lt; args.length; i++) {
+								System.out.println("Arg: " + i + ": " + args[i]);
+							}
+						}
+					}
+				</code-block>
+				In fact, to go through the loop counting down instead of
+				up as a check for zero test case is nominally faster in most instances:
+				<code-block collapsible="true" lang="java">
+					public class Arrays {
+						public static void main(String[] args) {
+							for (int i = args.length; i >= 0; i--) {
+								System.out.println("Arg: " + i + ": " + args[i]);
+							}
+						}
+					}
+				</code-block>
+				To demonstrate the speed difference on your platform, try out the program below to time how
+				long it takes to loop <code>"max int"</code> times:
+				<code-block collapsed-title="TimeArray.java" collapsible="true" lang="java"
+				            src="Java-Collections/Arrays/TimeArray.java"/>
+				This test program is really timing the for−loop and not the array access because there is no array
+				access.
+			</step>
+			<p>
+				If you ever try to access before the beginning or after the end of an array, an <code>ArrayIndexOutOfBoundsException</code>
+				will be thrown. As a subclass of <code>IndexOutOfBoundsException</code>, the
+				<code>ArrayIndexOutOfBoundsException</code> is a <code>runtime exception</code>
+			</p>
+			<p>
+				Thankfully, this means that you do not have to place array accesses within <code>try−catch
+				blocks.</code> In
+				addition, since looking beyond the bounds of an array is a runtime exception, your program will compile
+				just fine. The program will only throw the exception when the access is attempted.
+			</p>
+			<p>
+				<format color="DarkCyan" style="italic,bold">
+					The class hierarchy of ArrayIndexOutOfBoundsException
+				</format>
+			</p>
+			<code-block lang="mermaid">
+				graph LR
+				A[Exception] --> B[RuntimeException]
+				B --> C[IndexOutOfBoundsException]
+				C --> D[ArrayIndexOutOfBoundsException]
+			</code-block>
+			<note>
+				You cannot turn off array bounds checking. It is part of the security architecture of the Java runtime
+				to ensure that invalid memory space is never accessed
+			</note>
+			<p>
+				The following code demonstrates an improper way to read through the command−line array elements:
+			</p>
+			<code-block collapsed-title="ArrayArgs2.java" collapsible="true" lang="java"
+			            src="Java-Collections/Arrays/ArrayArgs2.java"/>
+			<note>
+				While functionally equivalent to the earlier ArrayArgs example, it is bad programming practice to use
+				exception handling for control flow. Exception handling should be reserved for exceptional conditions.
+			</note>
 		</procedure>
 	</chapter>
 

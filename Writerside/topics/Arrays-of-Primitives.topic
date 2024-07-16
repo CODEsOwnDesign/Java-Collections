@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
-<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Arrays of Primitives" id="Arrays-of-Primitives">
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Arrays-of-Primitives"
+       title="Arrays of Primitives"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-    <p>Start typing here...</p>
+	<procedure id="primitive-arrays">
+		<p>
+			When you create an array of primitive elements, the array holds the actual values for those elements. For
+			instance.
+		</p>
+		<img alt="image.png" border-effect="rounded" src="image.png"/>
+		<format color="DarkCyan" style="italic">
+			What an array of six integers ((1452, 1472, 1483, 1495, 1503, 1519) referred to from the variable life would
+			look like in regard to stack and heap memory.
+		</format>
+	</procedure>
 </topic>

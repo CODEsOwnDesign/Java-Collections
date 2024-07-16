@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
-<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Arrays of Objects" id="Arrays-of-Objects">
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Arrays-of-Objects"
+       title="Arrays of Objects"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-    <p>Start typing here...</p>
+	<procedure id="objects-arrays">
+		<p>
+			Unlike an array of primitives, when you create an array of objects, they are not stored in the actual
+			array. The array only stores references to the actual objects, and initially each reference is
+			<code>null</code> unless explicitly initialized.
+		</p>
+		<step>
+			Below shows what an array of Objects elements would look like where the elements are as follows:
+			<list>
+				<li>Leonardo da Vinci's country of birth, Italy</li>
+				<li>An image of his painting "The Baptism of Christ"</li>
+				<li>His theories (drawings) about helicopters and parachutes</li>
+				<li>An image of the "Mono Lisa"</li>
+				<li>His country of death, France</li>
+			</list>
+		</step>
+		<note>
+			The key to notice is that the objects are not in the array:
+			<code>only references to the objects are in the array</code>
+		</note>
+		<img alt="image_1.png" border-effect="rounded" src="image_1.png"/>
+		<format color="DarkCyan" style="italic">
+			The stack and heap memory for an array of objects
+		</format>
+	</procedure>
+
 </topic>

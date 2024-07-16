@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
-<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Copying and Cloning Arrays" id="Copying-and-Cloning-Arrays">
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Copying-and-Cloning-Arrays"
+       title="Copying and Cloning Arrays"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-    <p>Start typing here...</p>
+	<procedure id="cloning">
+		<p>
+			You can do many things when working with arrays. If you've outgrown the initial size of the array, you need
+			to create a new larger one and copy the original elements into the same location of the larger array. If,
+			however, you don't need to make the array larger, but instead you want to modify the array's elements while
+			keeping the original array intact, you must create a copy or clone of the array.
+		</p>
+		<p>
+			The <code>arraycopy()</code> method of the <code>System class</code> allows you to copy elements from one
+			array to another. When making this copy, the destination array can be larger; but if the destunation is
+			smaller, an <code>ArrayIndexOutOfBoundException</code> will be thrown at runtime. The <code>arraycopy
+		</code> method takes five arguments ( two for each array and starting position, and one for the number of
+			elements to copy ):
+		</p>
+		<code-block lang="java">
+			public static void arraycopy(Object sourceArray, int sourceOffset, Object destinationOffset, int numberOfElementsToCopy);
+		</code-block>
+		<p>
+			Besides type compatibility, the only requirement here is that the destination
+			array's memory is already allocated
+		</p>
+		<warning>
+			When copying elements between different arrays, if the source or destination
+			arguments are not arrays or their types are not compatible, an <code>ArrayStoreException</code>
+			will be thrown. Incompatible arrays would be where one is an array of primitives and
+			the other is an array of objects; or the primitive types are different; or the object types
+			are not assignable
+		</warning>
+		<p>
+			To demonstrate, take an integer array and creates a new array that is twice as large. The
+			<code>doubleArray()</code> method in the following example does this for us:
+		</p>
+		<format color="DarkCyan" style="italic">
+			Doubling the size of an array
+		</format>
+		<code-block lang="java" src="Java-Collections/Arrays/DoubleArray.java"/>
+		<p>
+			After getting the length of the original array, a new array of the right size is created before the old
+			elements are copied into their original positions in the new array. After you learn about <code>array
+			reflection</code> , you can generalize the method to double the size of an array of any type.
+		</p>
+		<p>
+			When executed, the program generates the following output:
+		</p>
+		<code-block lang="console">
+			Original array 1 size: 5
+			New array 1 size: 10
+			Original array 2 size: 10
+			New array 2 size: 20
+		</code-block>
+		<note>
+			When copying arrays with <code>arraycopy()</code>, the source and destination arrays can be the same if you
+			want to copy a subset of the array to another area within that array.
+		</note>
+		<p>
+			This works even if there is some overlap. Since arrays implement the <code>Cloneable interface</code>,
+			besides copying regions of arrays, you can also clone them. <code>Cloning</code> involves creating a new
+			array of the same size and type and copying all the old elements into the new array. This is unlike copying,
+			which requires you to create and size the destination array yourself. In the case of primitive elements, the
+			new array has copies of the old elements, so changes to the elements of one are not reflected in the copy.
+			However, in the case of object references, only the reference is copied. Thus, both copies of the array
+			would point to the same object. Changes to that object would be reflected in both arrays. This is called a
+			<code>shallow copy or shallow clone</code>
+		</p>
+	</procedure>
 </topic>

@@ -7,5 +7,13 @@
                   start-page="Java-Collections.topic">
 
     <toc-element topic="Java-Collections.topic"/>
-    <toc-element topic="Arrays.topic"/>
+    <toc-element topic="Arrays.topic">
+        <toc-element topic="Declaring-and-Creating-Arrays.topic">
+            <toc-element topic="Arrays-of-Primitives.topic"/>
+            <toc-element topic="Arrays-of-Objects.topic"/>
+            <toc-element topic="Multidimensional-Arrays.topic"/>
+            <toc-element topic="Initializing-Arrays.topic"/>
+            <toc-element topic="Copying-and-Cloning-Arrays.topic"/>
+        </toc-element>
+    </toc-element>
 </instance-profile>

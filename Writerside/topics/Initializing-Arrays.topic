@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic
-        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
-<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Initializing Arrays" id="Initializing-Arrays">
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Initializing-Arrays"
+       title="Initializing Arrays"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
 
-    <p>Start typing here...</p>
+	<procedure id="initializing">
+		<p>
+			When an array is first created, the runtime−environment will make sure that the array contents are
+			automatically initialized to some known (as opposed to undefined) value. As with uninitialized instance and
+			class variables, array contents are initialized to either the numerical equivalent of <code>zero</code>, the
+			character equivalent of <code>\u0000</code>, the boolean <code>false</code>, or <code>null</code> for object
+			arrays
+		</p>
+		<format color="DarkCyan" style="italic">Array Initial Values</format>
+		<img alt="image_4.png" border-effect="rounded" src="image_4.png"/>
+		<p>
+			When you declare an array you can specify the initial values of the elements. This is done by providing a
+			comma−delimited list between braces <code>[{ }]</code> after an equal sign at the declaration point.
+		</p>
+		<p>
+			For instance, the following will create a three-element array of names:
+		</p>
+		<code-block lang="java">
+			String[] names = {"Leonardo", "da", "Vinci"};
+		</code-block>
+		<p>
+			Notice that when you provide an array initializer, you do not have to specify the length. The array length
+			is set automatically based upon the number of elements in the comma−delimited list.
+		</p>
+		<note>
+			The Java language syntax permits a trailing comma after the last element in an array initializer block, as
+			in
+			<code-block lang="java">
+				String[] names = {"Leonardo", "da", "Vinci",};
+			</code-block>
+			This does not change the length of the array to four, but keeps it at
+			three. This flexibility is primarily for the benefit of code generators.
+		</note>
+		<p>
+			For multidimensional arrays, you would just use an extra set of parenthesis for each added dimension. For
+			instance, the following creates a 6 × 2 array of years and events. Because the array is declared as an array
+			of Object elements, it is necessary to use the Integer wrapper class to store each int primitive value
+			inside. All elements within an array must be of the array's declared type, or a subclass of that type, in
+			this case, Object, even though all the elements are subclasses
+		</p>
+		<code-block lang="java">
+			Object[][] events = {
+					{new Integer.valueOf(1452), new Birth("Italy")},
+					{new Integer.valueOf(1472), new Painting("baptismOfChrist.jpg")},
+					{new Integer.valueOf(1483), new Theory("Helicopter")},
+					{new Integer.valueOf(1495), new Theory("Parachute")},
+					{new Integer.valueOf(1503), new Painting("monaLisa.jpg")},
+					{new Integer.valueOf(1519), new Death("France")}
+			};
+		</code-block>
+		<p>
+			While it was easy to initialize an array when it was declared, you couldn't reinitialize the array later
+			with a comma−delimited list unless you declared another variable to store the new array in. This is where
+			anonymous arrays step in. With an anonymous array, you can reinitialize an array to a new set of values, or
+			pass unnamed arrays into methods when you don't want to define a local variable to store said array
+		</p>
+		<p>
+			Anonymous arrays are declared similarly to regular arrays. However, instead of specifying a length within
+			the square brackets, you place a comma−delimited list of values within braces after the brackets, as shown
+			here:
+		</p>
+		<code-block lang="java" src="Java-Collections/Arrays/AnonymousArray.java"/>
+		<p>You'll find anonymous arrays used frequently by code generators.</p>
+	</procedure>
+	<procedure id="passing_array_arguments_and_return_values" title="Passing Array Arguments and Return Values
+">
+		<p>
+			When an array is passed as an argument to a method, a reference to the array is passed. This permits you to
+			modify the contents of the array and have the calling routine see the changes to the array when the method
+			returns. In addition, because a reference is passed around, you can also return arrays created within
+			methods and not worry about the garbage collector releasing the array's memory when the method is done.
+		</p>
+	</procedure>
+
 </topic>
