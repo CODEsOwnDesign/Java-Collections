@@ -8,5 +8,15 @@
             <noindex-content>false</noindex-content>
         </variables>
     </build-profile>
+    <build-profile instance="Java">
+        <variables>
+            <noindex-content>false</noindex-content>
+        </variables>
+    </build-profile>
+    <build-profile instance="Java-Programming-Docs">
+        <variables>
+            <noindex-content>false</noindex-content>
+        </variables>
+    </build-profile>
 
 </buildprofiles>
