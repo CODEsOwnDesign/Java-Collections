@@ -15,6 +15,10 @@
                 <toc-element topic="Multidimensional-Arrays.topic"/>
                 <toc-element topic="Initializing-Arrays.topic"/>
                 <toc-element topic="Copying-and-Cloning-Arrays.topic"/>
+                <toc-element topic="Array-Immutability.topic"/>
+                <toc-element topic="Array-Assignments.topic"/>
+                <toc-element topic="Checking-for-Array-Equality.topic"/>
+                <toc-element topic="Array-Reflection.topic"/>
             </toc-element>
         </toc-element>
     </toc-element>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Array-Assignments"
+       title="Array Assignments"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
+
+	<procedure id="assignments">
+		<p>
+			Array assignments work like variable assignments. If a variable x is a reference to an array of y, then x
+			can be a reference to z. if a variable of type z can be assigned to y.
+		</p>
+		<p>
+			For example, imagine that y is the AWT <code>Component</code> class and z is the AWT Button class. Because a
+			Button variable can be assigned to a <code>Component</code> variable, a Button array can be assigned to a
+			<code>Component</code> array:
+		</p>
+		<code-block lang="java">
+			public class ArrayAssignment {
+				public static void main(String[] args) {
+					java.awt.Button[] buttons = {
+							new java.awt.Button("One"),
+							new java.awt.Button("Two"),
+							new java.awt.Button("Three")
+					};
+					java.awt.Component[] components = buttons;
+				}
+			}
+		</code-block>
+		<p>
+			When an assignment like this is made, both variables button and components refer to the same heap space
+			in memory. Changing an array element for one array element changes the element for both.
+		</p>
+		<img alt="image_5.png" border-effect="rounded" src="image_5.png"/>
+		<format color="DarkCyan" style="italic">Shared memory after an array assignment</format>
+		<p>
+			If, after assigning an array variable to a superclass array variable (as in the prior example of assigning
+			the button array to a component array variable) you then try to place a different subclass instance into the
+			array, an <code>ArrayStoreException</code> is thrown. To continue the prior example, an <code>ArrayStoreException</code>
+			would be thrown if you tried to place a Canvas into the components array. Even though the components array
+			is declared as an array of Component objects, because the components array specifically refers to an array
+			of Button objects, <code>Canvas</code> objects cannot be stored in the array. This is a <code>run−time
+			exception</code> as the actual assignment is legal from the perspective of a <code>type−safe compiler</code>.
+		</p>
+	</procedure>
+</topic>

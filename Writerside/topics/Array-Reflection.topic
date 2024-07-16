@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Array-Reflection"
+       title="Array Reflection"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
+
+	<procedure id="reflection">
+		<p>
+			If for some reason you are ever unsure whether an argument or object is an array, you can retrieve the
+			object's Class object and ask it. The <code>isArray()</code> method of the Class class will tell you. Once
+			you know you have an array, you can ask the <code>getComponentType()</code> method of Class what type of
+			array you actually have. The <code>getComponentType()</code> method returns <code>null</code> if the
+			<code>isArray()</code> method returns <code>false</code>. Otherwise, the Class type of the element is
+			returned. You can recursively call <code>isArray()</code> if the array is multidimensional. It will still
+			have only one component type. In addition, you can use the <code>getLength()</code> method of the Array
+			class found in the <code>java.lang.reflect</code> package to discover the length of the array.
+		</p>
+		<p>
+			To demonstrate, code below shows that the argument to the <code>main()</code> method is an array of
+			<code>java.lang.String</code> objects where the length is the number of command−line arguments specified:
+		</p>
+		<note>
+			If <code>printType()</code> was to be called with the previously defined buttons and components variables,
+			each would state that the array is of the <code>java.awt.Button type</code>.
+		</note>
+		<p>
+			If you don't use the <code>isArray()</code> and <code>getComponentType()</code> methods and you try to print
+			the Class type for an array, you'll get a string that includes a [ followed by a letter and the class name
+			(or no class name if a primitive). For instance, if you tried to print out the type variable in the
+			<code>printType()</code> method above, you would get class <code>[Ljava.lang.String;</code> as
+			the output
+		</p>
+		<p>
+			In addition to asking an object if it is an array and what type of array it is, you can also create arrays
+			at runtime with the java.lang.reflect.Array class. This might be helpful to create generic utility routines
+			that perform array tasks such as size doubling.
+		</p>
+		<p>
+			To create a new array, use the <code>newInstance()</code> method of Array, which comes in two varieties. For
+			single dimension arrays you would normally use the simpler version, which acts like the statement <code>new
+			type[length]</code> and <code>returns the array as an object</code>:
+		</p>
+		<code-block lang="java">
+			public static Object newInstance(Class type, int length);
+		</code-block>
+		<p>
+			For example, the following code creates an array with room for five integers:
+		</p>
+		<code-block lang="java">
+			int[] array = (int[]) java.lang.reflect.Array.newInstance(int.class, 5);
+		</code-block>
+		<note>
+			To specify the <code>Class</code> object for a primitive, just add <code>.class</code> to the end of the
+			primitive type name. You can also use the <code>TYPE</code> variable of the wrapper classes, like <code>Integer.TYPE</code>
+		</note>
+		<p>
+			The second variety of the <code>newInstance()</code> method requires the dimensions to be specified as an
+			array of integers:
+		</p>
+		<code-block lang="java">
+			public static Object newInstance(Class type, int[] dimensions);
+		</code-block>
+		<p>
+			In the simplest case of creating a single dimension array, you would create array with only one element.
+			In other words, if you were to create the same array of five integers, instead of passing the integer
+			value of 5, you would need to create an array of the single element 5 to pass along to the
+			<code>newInstance()</code> method:
+		</p>
+		<code-block lang="java">
+			int[] dimensions = {5};
+			int[] array = (int[]) java.lang.reflect.Array.newInstance(int.class, dimensions);
+		</code-block>
+		<p>
+			As long as you only need to create rectangular arrays, you can fill up the dimensions array with each array
+			length. For example, the following is the equivalent of creating a 3 × 4 array of integers:
+		</p>
+		<code-block lang="java">
+			int[] dimensions = {3, 4};
+			int[][] array = (int[][]) java.lang.reflect.Array.newInstance(int.class, dimensions);
+		</code-block>
+	</procedure>
+</topic>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Array-Immutability"
+       title="Array Immutability"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
+
+	<procedure id="immutability">
+		<p>
+			It is useful to return an array clone from a method if you do not want the caller of your method to
+			modify the underlying array structure. While you can declare arrays to be final, as in the following
+			example:
+		</p>
+		<code-block lang="java">
+			final static int[] array = {1, 2, 3, 4, 5, 6};
+		</code-block>
+		<p>
+			Declaring an object reference final (specifically, an array reference here) does not restrict you from
+			modifying the object. It only limits you from changing what the final variable refers to. While the
+			following line results in a compilation error:
+		</p>
+		<code-block lang="java">
+			class FinalArrayDemo {
+				public static void main(String[] args) {
+					array = new int[]{7, 8, 9, 10};
+				}
+			}
+		</code-block>
+		<p>
+			Changing an individual element is perfectly legal:
+		</p>
+		<code-block lang="java">
+			class FinalArrayDemo {
+				public static void main(String[] args) {
+					array = new int[]{7, 8, 9, 10};
+					array[2] = 12;
+				}
+			}
+		</code-block>
+		<tip>
+			Another way to <code>"return" an immutable array</code> from a method is to return an <code>Enumeration or
+			Iterator</code> into the array, rather than returning the actual array. Either interface provides access to
+			the individual elements without exposing the whole array to changes or requiring you to make a
+			copy of the entire array.
+		</tip>
+	</procedure>
+</topic>

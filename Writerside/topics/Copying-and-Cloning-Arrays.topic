@@ -70,5 +70,13 @@
 			would point to the same object. Changes to that object would be reflected in both arrays. This is called a
 			<code>shallow copy or shallow clone</code>
 		</p>
+		<p>
+			To demonstrate, the following method takes one integer array and returns a copy of said array
+		</p>
+		<code-block lang="java" src="Java-Collections/Arrays/CloneArray.java"/>
+		<tip>
+			Array cloning overrides the protected Object method that would normally throw a
+			CloneNotSupportedException with a public one that actually works.
+		</tip>
 	</procedure>
 </topic>

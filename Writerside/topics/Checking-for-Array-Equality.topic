@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+		SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic id="Checking-for-Array-Equality"
+       title="Checking for Array Equality"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd">
+
+	<procedure id="array-equality">
+		<p>
+			Checking for equality between two arrays can be done in one of two manners depending upon the type of
+			equality you are looking for. Are the array variables pointing to the same place in memory and thus
+			pointing to the same array? Or are the elements of two arrays comparatively equivalent.
+		</p>
+		<p>
+			Checking for two reference to the same memory space is done with the double equal sign operator
+			<code>==</code>. For example the prior components and buttons variables would be equal in this case since
+			one is a reference to the other:
+		</p>
+		<code-block lang="java" src="Java-Collections/Arrays/ArrayEquality.java"/>
+		<p>
+			However, if you compare an array to a cloned version of that then these would not be equal as far as ==
+			goes. Since these arrays have the same elements but exists in different memory space, they are different.
+			In order to have a clone of an array to be "equal" to the original, you can use the <code>equals()</code>
+			method of the <code>java.util.Arrays</code> class.
+		</p>
+		<code-block lang="java" src="Java-Collections/Arrays/CloneArrayEquality.java"/>
+		<p>
+			This will check for equality with each element. In the case where the arguments are arrays of objects, the
+			<code>equals()</code> method of each object will be used to check for equality. <code>Arrays.equals()</code>
+			works for arrays that are not clones, too.
+		</p>
+	</procedure>
+</topic>
